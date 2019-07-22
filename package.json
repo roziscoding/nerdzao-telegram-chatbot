@@ -1,0 +1,31 @@
+{
+  "name": "nerdzao-telegram-chatbot",
+  "version": "1.0.0",
+  "description": "Telegram chatbot to aid Nerdzao community",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "exit 0",
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "build:clean": "npm run clean && npm run build",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "nerdzao",
+    "chatbot",
+    "community",
+    "meetups",
+    "events"
+  ],
+  "author": "Rogério Munhoz <hello@rjmunhoz.me>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/debug": "^4.1.4",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "sugar-env": "^1.5.7",
+    "telegraf": "^3.30.1"
+  }
+}
