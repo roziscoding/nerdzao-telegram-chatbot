@@ -1,5 +1,6 @@
 import app from './app'
 import debug from 'debug'
+import express from 'express'
 import { AppConfig } from '../app.config'
 import { getWebhook } from '../app.config'
 
@@ -14,7 +15,12 @@ export async function start (config: AppConfig) {
   await telegraf.telegram.setWebhook(`https://${webhookLocation}`)
 
   log('Starting webhook')
-  await telegraf.startWebhook(config.server.webhook.path, null, config.server.webhook.port, config.server.webhook.url)
+  const server = express()
+  server.use(telegraf.webhookCallback(`/${config.telegram.apiToken}`))
+
+  server.listen(config.server.webhook.port, () => {
+    console.log(`${config.name} listening on port ${config.server.webhook.port}`)
+  })
 }
 
 export default {
